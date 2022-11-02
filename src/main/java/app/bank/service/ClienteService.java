@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 
 import app.bank.model.ClientePF;
 import app.bank.repo.ClientePFRepo;
+import app.bank.repo.ClientePJRepo;
 
 @Service
 public class ClienteService {
 
 	@Autowired
 	private ClientePFRepo clientePFRepo;
+	
+	private ClientePJRepo clientePJRepo;
 	
 	public void cadastrarCliente(ClientePF clientePF) {
 		clientePFRepo.save(clientePF);
