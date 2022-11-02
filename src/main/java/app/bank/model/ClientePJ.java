@@ -18,4 +18,6 @@ public class ClientePJ {
 	private int quantidadeDeEmpregados,quantidadeDeFiliais;
 	private String endereco,bairro, municipio, estado;
 	private int n;
+	
+	private boolean ativado, desativado;
 }
