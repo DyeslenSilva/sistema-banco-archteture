@@ -18,7 +18,7 @@ public class ClientePF {
 	private String cep,endereco, municipio, bairro,estado;
 	private int nCasa;
 	private String sResidenciaFixa, nResidenciaFixa;
-	private String telefoneFixo,celeuar, whatsapp, email;
+	private String telefoneFixo,celular, whatsapp, email;
 	private String profissaoAtual, remuneracao, renda, statusMatrimonial;
 	private boolean ativado, desativado;
 	//Status Matrimonial = class Enum
@@ -27,5 +27,8 @@ public class ClientePF {
 		return true;
 	}
 	
+	public String getErrorMessage() {
+		return "Cliente não encontrado";
+	}
 	
 }

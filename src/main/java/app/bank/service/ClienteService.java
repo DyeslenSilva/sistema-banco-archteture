@@ -2,6 +2,7 @@ package app.bank.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,34 @@ public class ClienteService {
 	public ClientePJ clientePorCNPJ(String cnpj) {
 		return clientePJRepo.findById(cnpj).orElse(null);
 	}
+	
+	public ClientePF atualizarClientePF(String cpf, ClientePFRepo cliPFRepo) {
+		Optional<ClientePF> cliente  = cliPFRepo.findById(cpf);
+		if(cliente.isPresent()) {
+				cliente.get().getRg();
+				cliente.get().getCpf();
+				cliente.get().getNome();
+				cliente.get().getCep();
+				cliente.get().getEndereco();
+				cliente.get().getNCasa();
+				cliente.get().getBairro();
+				cliente.get().getMunicipio();
+				cliente.get().getEstado();
+				cliente.get().getEmail();
+				cliente.get().getNomeDaMae();
+				cliente.get().getNomeDoPai();
+				cliente.get().getTelefoneFixo();
+				cliente.get().getWhatsapp();
+				cliente.get().getProfissaoAtual();
+				cliente.get().getRemuneracao();
+				cliente.get().getRenda();
+				cliente.get().getStatusMatrimonial();
+				cliente.get().getSResidenciaFixa();
+				cliente.get().getNResidenciaFixa();
+		}
+		return null;
+	}
+	
 	public void removeClientePorCPF(String [] lista) {
 		Arrays.stream(lista).forEach(cpf-> {
 			ClientePF clientePF = clientePorCPF(cpf);
@@ -78,5 +107,5 @@ public class ClienteService {
 			}
 		});
 	}
-	
+		
 }
