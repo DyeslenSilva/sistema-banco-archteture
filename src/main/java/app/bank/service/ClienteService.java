@@ -51,7 +51,7 @@ public class ClienteService {
 		return clientePJRepo.findById(cnpj).orElse(null);
 	}
 	
-	public ClientePF atualizarClientePF(String cpf, ClientePFRepo cliPFRepo) {
+	public void atualizarClientePF(String cpf, ClientePFRepo cliPFRepo) {
 		Optional<ClientePF> cliente  = cliPFRepo.findById(cpf);
 		if(cliente.isPresent()) {
 				cliente.get().getRg();
@@ -75,7 +75,25 @@ public class ClienteService {
 				cliente.get().getSResidenciaFixa();
 				cliente.get().getNResidenciaFixa();
 		}
-		return null;
+	}
+	
+	public void atualizarEntidade(String cnpj, ClientePJRepo pjRepo) {
+		Optional<ClientePJ> clientePJ = pjRepo.findById(cnpj);
+				if(clientePJ.isPresent()) {
+						clientePJ.get().getCNPJ();
+						clientePJ.get().getRazaoSocial();
+						clientePJ.get().getProprietarioResponsavel();
+						clientePJ.get().getQuantidadeDeEmpregados();
+						clientePJ.get().getTelefoneResponsavel();
+						clientePJ.get().getQuantidadeDeFiliais();
+						clientePJ.get().getEndereco();
+						clientePJ.get().getN();
+						clientePJ.get().getMunicipio();
+						clientePJ.get().getEstado();
+						clientePJ.get().getBairro();
+						clientePJ.get().getCelular();
+						clientePJ.get().getTelefoneResponsavel();
+				}
 	}
 	
 	public void removeClientePorCPF(String [] lista) {
