@@ -5,6 +5,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -69,5 +70,33 @@ public class ClienteController {
 		}
 	}
 	
-
+	@PutMapping("/clientePF/{cpf}")
+	public ResponseEntity<ClientePF> updateClientePF(@PathVariable String cpf , BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			ClientePF clientePF = clienteService.clientePorCPF(cpf);
+			return ResponseEntity.ok(new ClientePF(clientePF));
+		}
+	}
+	
+	@PutMapping("/clientePF/{rg}")
+	public ResponseEntity<ClientePF> updateClientePf(@PathVariable String rg, BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			ClientePF clientePF = clienteService.clientePorRG(rg);
+			return ResponseEntity.ok(new ClientePF(clientePF));
+		}
+	}
+	
+	@PutMapping("/clientePJ/{cnpj}")
+	public ResponseEntity<ClientePJ> updateClientePJ(@PathVariable String cnpj, BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			ClientePJ clientePJ = clienteService.clientePorCNPJ(cnpj);
+			return ResponseEntity.ok(new ClientePJ(clientePJ));
+		}
+	}
 }

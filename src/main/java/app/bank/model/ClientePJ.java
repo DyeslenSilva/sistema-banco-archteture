@@ -11,6 +11,10 @@ import lombok.Data;
 @Table(name = "clientePJ")
 public class ClientePJ {
 
+	public ClientePJ(ClientePJ clientePJ) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	private String CNPJ;
 	private String razaoSocial, proprietarioResponsavel, telefoneResponsavel;

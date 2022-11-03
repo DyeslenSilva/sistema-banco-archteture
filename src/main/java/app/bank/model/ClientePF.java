@@ -4,11 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "clientePF")
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientePF {
 
 	@Id
@@ -30,5 +34,11 @@ public class ClientePF {
 	public String getErrorMessage() {
 		return "Cliente não encontrado";
 	}
+
+	public ClientePF(ClientePF clientePF) {
+		
+	}
+
+
 	
 }
