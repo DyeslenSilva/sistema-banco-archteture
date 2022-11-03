@@ -2,6 +2,7 @@ package app.bank.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -97,6 +98,36 @@ public class ClienteController {
 		}else {
 			ClientePJ clientePJ = clienteService.clientePorCNPJ(cnpj);
 			return ResponseEntity.ok(new ClientePJ(clientePJ));
+		}
+	}
+	
+	@DeleteMapping("/clientePF/{cpf}")
+	public ResponseEntity<ClientePF> deleteClientePF(@PathVariable String cpf[], BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			clienteService.removeClientePorCPF(cpf);
+			return ResponseEntity.ok().build(); 
+		}
+	}
+	
+	@DeleteMapping("/clientePF/{rg}")
+	public ResponseEntity<ClientePF> deleteClientePf(@PathVariable String rg[], BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			clienteService.removeClientePorRG(rg);
+			return ResponseEntity.ok().build();
+		}
+	}
+	
+	@DeleteMapping("/clientePJ/{cnpj}")
+	public ResponseEntity<ClientePJ> deleteClientePJ(@PathVariable String cnpj[], BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			clienteService.removeEntidade(cnpj);
+			return ResponseEntity.ok().build();
 		}
 	}
 }
