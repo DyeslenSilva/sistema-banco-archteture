@@ -108,4 +108,12 @@ public class ContaSevice {
 				cnpjCliente.get().getEstado();
 		}
 	}
+	
+	public void deleteContaPF(Integer conta) {
+		contaPFRepo.deleteById(conta);
+	}
+	
+	public void deleteContaPJ(Integer conta) {
+		contaPJRepo.deleteById(conta);
+	}
 }
