@@ -1,10 +1,15 @@
 package app.bank.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
-import antlr.collections.List;
+import app.bank.model.ClientePF;
+import app.bank.model.ClientePJ;
 import app.bank.model.ContaPF;
 import app.bank.model.ContaPJ;
+import app.bank.repo.ClientePFRepo;
+import app.bank.repo.ClientePJRepo;
 import app.bank.repo.ContaPFRepo;
 import app.bank.repo.ContaPJRepo;
 
@@ -13,6 +18,8 @@ public class ContaSevice {
 	
 	private ContaPFRepo contaPFRepo;
 	private ContaPJRepo contaPJRepo;
+	private ClientePFRepo clientePFRepo;
+	private ClientePJRepo clientePJRepo;
 	
 	public boolean abrirContaPF(ContaPF contaPF) {
 		boolean saveCliente = contaPFRepo.save(contaPF) != null;
@@ -23,14 +30,43 @@ public class ContaSevice {
 		boolean saveCliente = contaPJRepo.save(contaPJ) != null;
 		return saveCliente;
 	}
-	
+		
 	public java.util.List<ContaPF> getAllContaPF(){
-		return contaPFRepo.findAll();
+		return contaPFRepo.findAll().stream().filter(ctpf -> 
+				ctpf.isDesativado()).toList();
 	}
 	
 	public java.util.List<ContaPJ> getAllContaPJ(){
-		return contaPJRepo.findAll();
+		return contaPJRepo.findAll().stream().filter(ctpj -> 
+					ctpj.isDesativado()).toList();
 	}
 	
+	public Optional<ContaPF> getContaPF(Integer numeroConta) {
+		Optional<ContaPF> contaNumero = contaPFRepo.findById(numeroConta);
+		return contaNumero;
+	}
 	
+	public Optional<ContaPJ> getContaPJ(Integer numeroConta){
+		Optional<ContaPJ> contaNumero = contaPJRepo.findById(numeroConta);
+		return contaNumero;
+	}
+	
+	public Optional<ClientePF> getContaPFrg(String rg){
+		Optional<ClientePF> rgCliente = clientePFRepo.findById(rg);
+		return rgCliente;
+	}
+	
+	public Optional<ClientePF> getContaPFcpf(String cpf){
+		Optional<ClientePF> cpfCliente = clientePFRepo.findById(cpf);
+		return cpfCliente;
+	}
+	
+	public Optional<ClientePJ> getContaPJ(String cnpj){
+		Optional<ClientePJ> cnpjCliente = clientePJRepo.findById(cnpj);
+		return cnpjCliente;
+	}
+	
+	public void updateContaPF() {
+		
+	}
 }
