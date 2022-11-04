@@ -66,7 +66,46 @@ public class ContaSevice {
 		return cnpjCliente;
 	}
 	
-	public void updateContaPF() {
-		
+	public void updateContaPF(String cpf) {
+		Optional<ClientePF>  cpfCliente	 = clientePFRepo.findById(cpf);
+		if(cpfCliente.isPresent()) {
+				cpfCliente.get().getNome();
+				cpfCliente.get().getRg();
+				cpfCliente.get().getCpf();
+				cpfCliente.get().getNomeDaMae();
+				cpfCliente.get().getNomeDoPai();
+				cpfCliente.get().getCep();
+				cpfCliente.get().getEndereco();
+				cpfCliente.get().getNCasa();
+				cpfCliente.get().getBairro();
+				cpfCliente.get().getMunicipio();
+				cpfCliente.get().getEstado();
+				cpfCliente.get().getEmail();
+				cpfCliente.get().getTelefoneFixo();
+				cpfCliente.get().getWhatsapp();
+				cpfCliente.get().getProfissaoAtual();
+				cpfCliente.get().getRemuneracao();
+				cpfCliente.get().getRenda();
+				cpfCliente.get().getSResidenciaFixa();
+				cpfCliente.get().getNResidenciaFixa();
+				cpfCliente.get().getStatusMatrimonial();
+		}
+	}
+	
+	public void updateContaPJ(String cnpj) {
+		Optional<ClientePJ> cnpjCliente = clientePJRepo.findById(cnpj);
+		if(cnpjCliente.isPresent()) {
+				cnpjCliente.get().getCNPJ();
+				cnpjCliente.get().getRazaoSocial();
+				cnpjCliente.get().getProprietarioResponsavel();
+				cnpjCliente.get().getQuantidadeDeFiliais();
+				cnpjCliente.get().getQuantidadeDeEmpregados();
+				cnpjCliente.get().getTelefoneResponsavel();
+				cnpjCliente.get().getEndereco();
+				cnpjCliente.get().getN();
+				cnpjCliente.get().getMunicipio();
+				cnpjCliente.get().getBairro();
+				cnpjCliente.get().getEstado();
+		}
 	}
 }
