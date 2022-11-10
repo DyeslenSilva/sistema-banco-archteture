@@ -22,6 +22,7 @@ public class ContasController {
 
 	private ContaService contaService;
 	private ClientePF clientePF;
+	private ClientePJ clientePJ;
 	
 	@PostMapping("/contaPF/abertura")
 	public ResponseEntity<ContaPF> aberturaContaPF(@PathVariable ContaPF contaPF, BindingResult bindingResult){
@@ -32,6 +33,18 @@ public class ContasController {
 		}else {
 			contaService.getContaPFrg(clientePF.getRg());
 			contaService.getContaPFcpf(clientePF.getCpf());
+			return ResponseEntity.ok().build();
+		}
+	}
+	
+	@PostMapping("/contaPJ/abertura")
+	public ResponseEntity<ContaPJ>aberturaDeContaPJ(@PathVariable ContaPJ contaPJ){
+		Optional<ContaPJ> aberturaPJ = contaService.getContaPJ(contaPJ.getNumeroContaBancaria());
+		if(aberturaPJ.isEmpty()) {
+			contaService.abrirContaPJ(contaPJ);
+			return ResponseEntity.ok().build();
+		}else {
+			contaService.getContaPJ(clientePJ.getCNPJ());
 			return ResponseEntity.ok().build();
 		}
 	}
