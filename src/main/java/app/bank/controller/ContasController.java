@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -103,6 +104,28 @@ public class ContasController {
 		Optional<ClientePJ> clientePJs = contaService.getContaPJ(clientePJ.getCNPJ());
 		if(clientePJs.isPresent()) {
 			contaService.updateContaPJ(clientePJ.getCNPJ());
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	@DeleteMapping("/conta/{cpf}/{numeroConta}")
+	public ResponseEntity<ClientePF> deleteContaPF(ClientePF clientePF, ContaPF contaPF){
+		Optional<ClientePF> pfCliente = contaService.getContaPFcpf(clientePF.getCpf());
+		if(pfCliente.isPresent()) {
+			contaService.deleteContaPF(contaPF.getNumeroContaBancaria());
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	@DeleteMapping("/conta/{cnpj}/{numeroConta}")
+	public ResponseEntity<ClientePJ> deleteContaPJ(ClientePJ clientePJ, ContaPJ contaPJ){
+		Optional<ClientePJ> pjCliente = contaService.getContaPJ(clientePJ.getCNPJ());
+		if(pjCliente.isPresent()) {
+			contaService.deleteContaPJ(contaPJ.getNumeroContaBancaria());
 			return ResponseEntity.ok().build();
 		}else {
 			return ResponseEntity.badRequest().build();
