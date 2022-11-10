@@ -14,7 +14,7 @@ import app.bank.repo.ContaPFRepo;
 import app.bank.repo.ContaPJRepo;
 
 @Service
-public class ContaSevice {
+public class ContaService {
 	
 	private ContaPFRepo contaPFRepo;
 	private ContaPJRepo contaPJRepo;
