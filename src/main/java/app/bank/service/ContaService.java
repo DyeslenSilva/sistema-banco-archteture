@@ -2,6 +2,7 @@ package app.bank.service;
 
 import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import app.bank.model.ClientePF;
@@ -11,6 +12,7 @@ import app.bank.model.ContaPJ;
 import app.bank.repo.ClientePFRepo;
 import app.bank.repo.ClientePJRepo;
 import app.bank.repo.ContaPFRepo;
+import app.bank.repo.ContaPFRepoInt;
 import app.bank.repo.ContaPJRepo;
 
 @Service
@@ -20,6 +22,7 @@ public class ContaService {
 	private ContaPJRepo contaPJRepo;
 	private ClientePFRepo clientePFRepo;
 	private ClientePJRepo clientePJRepo;
+	private ContaPFRepoInt contaPFRepoInt;
 	
 	public boolean abrirContaPF(ContaPF contaPF) {
 		boolean saveCliente = contaPFRepo.save(contaPF) != null;
@@ -89,6 +92,14 @@ public class ContaService {
 				cpfCliente.get().getSResidenciaFixa();
 				cpfCliente.get().getNResidenciaFixa();
 				cpfCliente.get().getStatusMatrimonial();
+		}
+	}
+	
+	
+	public void updateContaPF(Integer numeroConta, ContaPF contaPFF) {
+		Optional<ContaPF>  contaPF	 = contaPFRepoInt.findById(numeroConta);
+		if(contaPF.isPresent()) {
+			contaPF.get().setClientePF(contaPFF.getClientePF());
 		}
 	}
 	

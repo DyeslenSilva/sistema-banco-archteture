@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import app.bank.model.ClientePF;
 import app.bank.model.ClientePJ;
@@ -85,5 +86,26 @@ public class ContasController {
 		return ResponseEntity.ok().build();
 	}
 	
+	@PutMapping("/conta/{cpf}")
+	public ResponseEntity<ClientePF> alterandoContaPF(ClientePF clientePF,ContaPF contaPF){
+			Optional<ClientePF> clientePFf = contaService.getContaPFcpf(clientePF.getCpf());
+			if(clientePFf.isPresent()) {
+				contaService.updateContaPF(clientePF.getCpf());
+				contaService.updateContaPF(contaPF.getNumeroContaBancaria(), contaPF);
+				return ResponseEntity.ok().build();
+			}else {
+				return ResponseEntity.badRequest().build();
+			}
+	}
 	
+	@PutMapping("/conta/{cnpj}")
+	public ResponseEntity<ClientePJ> alterandoContaPJ(ClientePJ clientePJ, ContaPJ pj){
+		Optional<ClientePJ> clientePJs = contaService.getContaPJ(clientePJ.getCNPJ());
+		if(clientePJs.isPresent()) {
+			contaService.updateContaPJ(clientePJ.getCNPJ());
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
 }
