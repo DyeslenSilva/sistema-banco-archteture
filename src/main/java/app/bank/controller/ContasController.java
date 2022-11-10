@@ -101,7 +101,7 @@ public class ContasController {
 	}
 	
 	@PutMapping("/conta/{cpf}")
-	public ResponseEntity<ClientePF> alterandoContaPF(ClientePF clientePF,ContaPF contaPF){
+	public ResponseEntity<ClientePF> alterandoContaPF(@PathVariable ClientePF clientePF,@PathVariable ContaPF contaPF){
 			Optional<ClientePF> clientePFf = contaService.getContaPFcpf(clientePF.getCpf());
 			if(clientePFf.isPresent()) {
 				contaService.updateContaPF(clientePF.getCpf());
@@ -113,7 +113,7 @@ public class ContasController {
 	}
 	
 	@PutMapping("/conta/{cnpj}")
-	public ResponseEntity<ClientePJ> alterandoContaPJ(ClientePJ clientePJ, ContaPJ pj){
+	public ResponseEntity<ClientePJ> alterandoContaPJ(@PathVariable ClientePJ clientePJ,@PathVariable ContaPJ pj){
 		Optional<ClientePJ> clientePJs = contaService.getContaPJ(clientePJ.getCNPJ());
 		if(clientePJs.isPresent()) {
 			contaService.updateContaPJ(clientePJ.getCNPJ());
@@ -124,7 +124,7 @@ public class ContasController {
 	}
 	
 	@DeleteMapping("/conta/{cpf}/{numeroConta}")
-	public ResponseEntity<ClientePF> deleteContaPF(ClientePF clientePF, ContaPF contaPF){
+	public ResponseEntity<ClientePF> deleteContaPF(@PathVariable ClientePF clientePF,@PathVariable ContaPF contaPF){
 		Optional<ClientePF> pfCliente = contaService.getContaPFcpf(clientePF.getCpf());
 		if(pfCliente.isPresent()) {
 			contaService.deleteContaPF(contaPF.getNumeroContaBancaria());
@@ -135,7 +135,7 @@ public class ContasController {
 	}
 	
 	@DeleteMapping("/conta/{cnpj}/{numeroConta}")
-	public ResponseEntity<ClientePJ> deleteContaPJ(ClientePJ clientePJ, ContaPJ contaPJ){
+	public ResponseEntity<ClientePJ> deleteContaPJ(@PathVariable ClientePJ clientePJ,@PathVariable ContaPJ contaPJ){
 		Optional<ClientePJ> pjCliente = contaService.getContaPJ(clientePJ.getCNPJ());
 		if(pjCliente.isPresent()) {
 			contaService.deleteContaPJ(contaPJ.getNumeroContaBancaria());
