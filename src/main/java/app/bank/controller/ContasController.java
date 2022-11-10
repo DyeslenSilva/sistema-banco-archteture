@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -33,6 +34,7 @@ public class ContasController {
 		}
 	}
 	
+	@GetMapping("/contaPF/{rg}")
 	public ResponseEntity<ClientePF> contaPorRG(@PathVariable ClientePF clientePF, 
 				@PathVariable ContaPF contaPF){
 		Optional<ClientePF> contaRG = contaService.getContaPFrg(clientePF.getRg());
@@ -45,6 +47,7 @@ public class ContasController {
 		}
 	}
 	
+	@GetMapping("/contaPF/{cpf}")
 	public ResponseEntity<ClientePF> contaPorCPF(@PathVariable ClientePF clientePF,
 			@PathVariable ContaPF contaPF){
 		Optional<ClientePF> contaCPF = contaService.getContaPFcpf(clientePF.getCpf());
@@ -57,7 +60,7 @@ public class ContasController {
 		}
 	}
 	
-	
+	@GetMapping("/contaPJ/{cnpj}")
 	public ResponseEntity<ClientePJ> contaPorCNPJ(@PathVariable ClientePJ clientePJ,
 			@PathVariable ContaPJ contaPJ){
 		Optional<ClientePJ> pjConta = contaService.getContaPJ(clientePJ.getCNPJ());
@@ -70,13 +73,17 @@ public class ContasController {
 		}
  	}
 	
-	
+	@GetMapping("/contaPF")
 	public ResponseEntity<ClientePF> todasAsContasPF(){
 		contaService.getAllContaPF();
 		return ResponseEntity.ok().build();
 	}
 	
-	
+	@GetMapping("/contaPJ")
+	public ResponseEntity<ClientePJ> todasAsContasPJ(){
+		contaService.getAllContaPJ();
+		return ResponseEntity.ok().build();
+	}
 	
 	
 }
