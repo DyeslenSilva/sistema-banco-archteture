@@ -1,16 +1,35 @@
 package app.bank.model;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Fatura extends Credito{
 	
 	@Getter  @Setter
-	private double valorFatura;
+	private static double valorFatura;
 	
+	@Getter  @Setter
+	private static Date dataVencimento;
+	
+	@Getter 	@Setter
+	private static String descricaoCompra;
+	
+	@Getter @Setter
+	private static int nParcela;
+	
+	@Getter @Setter
+	private static int[] nCartao;
+	
+	public static void gerarFatura(int[]nCartao,double valorFatura, Date dataVencimento, String desc, int nParcela) {
+			setValorFatura(valorFatura);
+			setDataVencimento(dataVencimento);
+			setDescricaoCompra(desc);
+			setNParcela(nParcela);
+	}
 	
 }
