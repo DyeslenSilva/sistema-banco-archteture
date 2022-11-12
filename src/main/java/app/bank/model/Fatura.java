@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-public class Fatura extends Credito{
+public class Fatura {
 	
 	@Getter  @Setter
 	private static double valorFatura;
@@ -22,10 +22,15 @@ public class Fatura extends Credito{
 	@Getter @Setter
 	private static int nParcela;
 	
-	@Getter @Setter
+	 @Getter 
 	private static int[] nCartao;
 	
+	 public static boolean setNCartao(int[] nCartao) {
+		return true;
+	}
+	 
 	public static void gerarFatura(int[]nCartao,double valorFatura, Date dataVencimento, String desc, int nParcela) {
+			setNCartao(nCartao);
 			setValorFatura(valorFatura);
 			setDataVencimento(dataVencimento);
 			setDescricaoCompra(desc);

@@ -11,6 +11,9 @@ public class ContaPF extends ContaBancaria{
 		private boolean ativado, desativado;
 		private Object ClientePF;
 		
+		
+		private double limite;
+		
 		private int senha;
 		
 		private double saldo;
@@ -29,7 +32,15 @@ public class ContaPF extends ContaBancaria{
 			return saldo;
 		}
 		
+		
+		public double setLimite(double limite) {
+			return limite;
+		}
+		
 		public boolean setSenha(int senha) {
 			return true;
+		}
+		public void setClientePF(app.bank.model.ClientePF clientePF2) {
+			this.clientePF = clientePF2;
 		}
 }

@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Debito extends Cartoes {
 	
 	@Getter 	@Setter
@@ -15,10 +14,7 @@ public class Debito extends Cartoes {
 	@Getter @Setter
 	private static ContaPJ contaPJ;
 	
-	@Getter @Setter
-	private int[] nCartao;
-	
-	
+
 	public static double consultaSaldoPF(ClientePF clientePF, int senha) {
 		double saldo = Cartoes.getSaldoDebito();
 		if(contaPF.setClientePF(clientePF.getCpf())&& contaPF.setSenha(senha)) {
@@ -26,7 +22,6 @@ public class Debito extends Cartoes {
 		}
 		return saldo;
 	}
-	
 	
 	public static double consultaSaldoPJ(ClientePJ clientePJ, int senha) {
 		double saldo = Cartoes.getSaldoDebito();
