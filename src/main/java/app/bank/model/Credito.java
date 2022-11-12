@@ -14,4 +14,6 @@ public class Credito extends Cartoes{
 	
 	@Getter @Setter
 	private ClientePJ clientePJ;
+	
+
 }

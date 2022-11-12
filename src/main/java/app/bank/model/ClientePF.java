@@ -25,6 +25,9 @@ public class ClientePF {
 	private String telefoneFixo,celular, whatsapp, email;
 	private String profissaoAtual, remuneracao, renda, statusMatrimonial;
 	private boolean ativado, desativado;
+	
+	
+	
 	//Status Matrimonial = class Enum
 	public boolean isDesativado() {
 		// TODO Auto-generated method stub
@@ -38,7 +41,8 @@ public class ClientePF {
 	public ClientePF(ClientePF clientePF) {
 		
 	}
-
+	
+	
 
 	
 }
