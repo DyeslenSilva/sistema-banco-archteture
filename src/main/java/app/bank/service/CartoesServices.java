@@ -3,6 +3,7 @@ package app.bank.service;
 import org.hibernate.boot.jaxb.mapping.spi.FetchableAttribute;
 import org.springframework.stereotype.Service;
 
+import app.bank.model.CaixaEletronico;
 import app.bank.model.Cartoes;
 import app.bank.model.ClientePF;
 import app.bank.model.ClientePJ;
@@ -18,6 +19,8 @@ public class CartoesServices implements CartoesInteface{
 	//private ConfigCartao configCartao;
 	private Debito debito;
 	private Credito credito;
+	private CaixaEletronico caixaEletronico;
+	
 	
 	@Override
 	public void gerarCartaoDeDebito(int min, int max, String nome) {
@@ -69,9 +72,8 @@ public class CartoesServices implements CartoesInteface{
 
 	
 	@Override
-	public void sacar(Cartoes cartoes, Debito debito) {
-		// TODO Auto-generated method stub
-		
+	public void sacar(int []nCartao,double valorDoSaque) {
+		caixaEletronico.saque(nCartao,valorDoSaque);
 	}
 
 	@Override
@@ -122,11 +124,7 @@ public class CartoesServices implements CartoesInteface{
 
 
 
-	@Override
-	public void consultaFatura(Cartoes cartoes) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 

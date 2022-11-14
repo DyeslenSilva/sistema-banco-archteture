@@ -11,6 +11,22 @@ public class ContaBancaria {
 	private int numeroContaBancaria;
 	
 	
+	private double saldoConta;
+	private CaixaEletronico cxe;
+	
+	public boolean verificaSaldo(int nConta) {
+		double saldoEmConta = getSaldoConta(nConta);
+		if(saldoEmConta >0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	private double getSaldoConta(int nConta) {
+		return this.saldoConta;
+	}
+	
 	
 	
 }

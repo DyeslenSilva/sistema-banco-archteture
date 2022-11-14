@@ -32,13 +32,17 @@ public class NotasDinheiro {
 	}
 	
 	public  boolean notasNoCaixaBool(NotasDinheiro notas) {
-		double notasDeDinheiro = notas();
+		//double notasDeDinheiro = notas();
 		if(notas != null) {
 			return true;
 		}else {
 			return false;
 		}
 	}
+	
+	
+	
+	
 	
 	
 }

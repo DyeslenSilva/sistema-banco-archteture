@@ -13,8 +13,8 @@ public interface CartoesInteface {
 	//public void gerarFaturaDeCredito();
 	//public void consultaSaldo(ClientePF clientePF);
 	//public void consultaLimite(Cartoes cartoes, Credito credito);
-	public void consultaFatura(Cartoes cartoes);
-	public void sacar(Cartoes cartoes, Debito debito);
+	//public void consultaFatura(Cartoes cartoes);
+//	public void sacar(Cartoes cartoes, Debito debito);
 	public void bloquearCartaoDeDebito(Cartoes cartoes, Debito debito) ;
 	public void bloquearCartaoDeCredito(Cartoes cartoes, Credito credito);
 	public void cancelarCartaoDeDebito(Cartoes cartoes, Debito debito);
@@ -28,4 +28,6 @@ public interface CartoesInteface {
 	void consultaLimite(ClientePJ clientePJ, int senha);
 	void consultaLimite(ClientePF clientePF, int senha);
 	void consultaLimite(Cartoes cartoes, int senha);
+	//void sacar(double valorDoSaque);
+	void sacar(int[] nCartao, double valorDoSaque);
 }
