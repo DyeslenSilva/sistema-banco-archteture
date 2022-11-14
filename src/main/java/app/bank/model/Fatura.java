@@ -23,16 +23,21 @@ public class Fatura {
 	@Getter @Setter
 	private static int nParcela;
 	
+	@Getter @Setter
+	private static int senhaFatura;
+	
+	
 	 @Getter 
 	private static int[] nCartao;
-	
-	 
-	 
 	 
 	 public static boolean setNCartao(int[] nCartao) {
 		return true;
 	}
 	 
+	 public static Fatura getFatura() {
+		 Fatura fatura = new Fatura();
+		 return fatura;
+	 }
 
 	public Fatura getNCartao(int[] nCartao2) {
 		Fatura nCartao = ConverteFatura.faturaConverte(nCartao2);
@@ -55,22 +60,35 @@ public class Fatura {
 	}
 	
 	public Fatura getNParcela(int nParcela) {
-		Fatura nmParcela = ConverteFatura.faturaConverte(dataVencimento);
+		Fatura nmParcela = ConverteFatura.faturaConverte(nParcela);
 		return nmParcela;
 	}
 	
-	public static void gerarFatura(int[]nCartao,double valorFatura, Date dataVencimento, String desc, int nParcela) {
-			setNCartao(nCartao);
-			setValorFatura(valorFatura);
-			setDataVencimento(dataVencimento);
-			setDescricaoCompra(desc);
-			setNParcela(nParcela);
-	}	
+	
+	public Fatura getSenhaFatura(int senha) {
+		Fatura senhaFatura = ConverteFatura.faturaConverte(senha);
+		return senhaFatura;
+	}
+	
+	public static Fatura gerarFatura(int[]nCartao,double valorFatura, Date dataVencimento, String desc, int nParcela) {
+			Fatura fatura = getFatura();
+			fatura.getNCartao(nCartao)
+				.getValorFatura(valorFatura)
+				.getDescricaoCompra(desc)
+				.getNParcela(nParcela);
+			return fatura;
+	}
+	
+	public static Fatura consultaFatura(int [] nCartao,  int senha) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(nCartao).getSenhaFatura(senha);
+		return fatura;
+	}
+	
 }
 
 
 class ConverteFatura{
-	
 	
 	public static Fatura faturaConverte(Object fatura) {
 		if(fatura != null) {

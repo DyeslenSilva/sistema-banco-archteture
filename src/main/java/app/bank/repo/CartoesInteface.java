@@ -21,7 +21,8 @@ public interface CartoesInteface {
 	public void cancelarCartaoDeCredito(Cartoes cartoes, Credito credito);
 	public void realizarPagamentoDeFatura(Cartoes cartoes, Credito credito);
 	public void gerarCartaoDeDebito(int min, int max, String nome);
-	void gerarFaturaDeCredito();
+	public Fatura gerarFaturaDeCredito(Fatura fatura);
+	public Fatura consultaFaturaDeCredito(Fatura nFatura, int senha);
 	void consultaSaldoPF(ClientePF clientePF, int senha);
 	void consultaSaldoPJ(ClientePJ clientePJ, int senha);
 	void consultaLimite(ClientePJ clientePJ, int senha);

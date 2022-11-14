@@ -1,5 +1,6 @@
 package app.bank.service;
 
+import org.hibernate.boot.jaxb.mapping.spi.FetchableAttribute;
 import org.springframework.stereotype.Service;
 
 import app.bank.model.Cartoes;
@@ -33,12 +34,7 @@ public class CartoesServices implements CartoesInteface{
 	}
 
 
-	@Override
-	public void gerarFaturaDeCredito() {
-		Fatura.gerarFatura(Fatura.getNCartao(),Fatura.getValorFatura(), Fatura.getDataVencimento(), 
-					Fatura.getDescricaoCompra(), Fatura.getNParcela());
-	}
-
+	
 	@Override
 	public void consultaSaldoPF(ClientePF clientePF, int senha) {
 		Debito.consultaSaldoPF(clientePF.getCpf(), senha);
@@ -55,12 +51,23 @@ public class CartoesServices implements CartoesInteface{
 		Credito.consultaLimiteCartaoPF(Cartoes.getNCartao(), senha);
 	}
 
+
 	@Override
-	public void consultaFatura(Cartoes cartoes) {
-		// TODO Auto-generated method stub
-		
+	public Fatura gerarFaturaDeCredito(Fatura fatura) {
+		Fatura fat =
+		Fatura.gerarFatura(Fatura.getNCartao(), Fatura.getValorFatura(), Fatura.getDataVencimento(),
+					Fatura.getDescricaoCompra(), Fatura.getNParcela());
+		return fat;
+	}
+	
+	@Override
+	public Fatura consultaFaturaDeCredito(Fatura nFatura, int senha) {
+		Fatura fatura = 
+				Fatura.consultaFatura(Fatura.getNCartao(), Fatura.getSenhaFatura());
+		return fatura;
 	}
 
+	
 	@Override
 	public void sacar(Cartoes cartoes, Debito debito) {
 		// TODO Auto-generated method stub
@@ -114,6 +121,12 @@ public class CartoesServices implements CartoesInteface{
 	}
 
 
+
+	@Override
+	public void consultaFatura(Cartoes cartoes) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 

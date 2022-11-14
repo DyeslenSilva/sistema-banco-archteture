@@ -55,8 +55,4 @@ public class Credito extends Cartoes{
 	}
 
 
-
-	
-
-	
 }

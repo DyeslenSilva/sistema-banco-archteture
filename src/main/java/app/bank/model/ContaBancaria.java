@@ -10,4 +10,7 @@ public class ContaBancaria {
 	@Id
 	private int numeroContaBancaria;
 	
+	
+	
+	
 }
