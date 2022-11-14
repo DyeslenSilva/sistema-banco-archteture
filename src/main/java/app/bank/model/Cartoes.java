@@ -21,7 +21,7 @@ public class Cartoes {
 	
 	private int senha;
 	
-	public boolean setSenha(int senha) {
+	public static boolean setSenha(int senha) {
 		return true;
 	}
 
@@ -29,7 +29,14 @@ public class Cartoes {
 		return limite;
 	}
 
-	public boolean setNCartao(int[] nCartao) {
+	public static boolean setNCartao(int[] nCartao) {
 		return true;
 	}
+
+	public static boolean setNCartao(boolean setNCartao) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+
 }

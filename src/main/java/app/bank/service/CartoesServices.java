@@ -52,11 +52,11 @@ public class CartoesServices implements CartoesInteface{
 
 	@Override
 	public void consultaLimite(Cartoes cartoes, int senha) {
-		Credito.consultaLimitePF(cartoes, senha);
+		Credito.consultaLimiteCartaoPF(Cartoes.getNCartao(), senha);
 	}
 
 	@Override
-	public void consultaFatura(Cartoes cartoes, Credito credito) {
+	public void consultaFatura(Cartoes cartoes) {
 		// TODO Auto-generated method stub
 		
 	}

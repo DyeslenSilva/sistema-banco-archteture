@@ -13,7 +13,7 @@ public interface CartoesInteface {
 	//public void gerarFaturaDeCredito();
 	//public void consultaSaldo(ClientePF clientePF);
 	//public void consultaLimite(Cartoes cartoes, Credito credito);
-	public void consultaFatura(Cartoes cartoes, Credito credito);
+	public void consultaFatura(Cartoes cartoes);
 	public void sacar(Cartoes cartoes, Debito debito);
 	public void bloquearCartaoDeDebito(Cartoes cartoes, Debito debito) ;
 	public void bloquearCartaoDeCredito(Cartoes cartoes, Credito credito);
