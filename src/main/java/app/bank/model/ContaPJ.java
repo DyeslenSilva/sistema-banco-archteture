@@ -1,8 +1,10 @@
 package app.bank.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ContaPJ extends ContaBancaria{
 	private ClientePJ clientePJ;
 	
@@ -10,7 +12,7 @@ public class ContaPJ extends ContaBancaria{
 	private int senha;
 
 	public boolean setClientePJ(String cnpj) {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 	
@@ -18,7 +20,17 @@ public class ContaPJ extends ContaBancaria{
 		return saldo;
 	}
 	
+	
+	public ClientePJ clientePJ(ClientePJ clientePJ) {
+		return clientePJ = this.clientePJ;
+	}
+	
 	public boolean setSenha(int senha) {
 		return true;
+	}
+
+	public String setClientePJ(boolean setCNPJ) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

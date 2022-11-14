@@ -42,6 +42,14 @@ public class ClientePF {
 		
 	}
 	
+	public String setCPF(String cpf) {
+		return this.cpf = cpf;
+	}
+
+	public String setCpf(String cpf2) {
+		// TODO Auto-generated method stub
+		return cpf2;
+	}
 	
 
 	

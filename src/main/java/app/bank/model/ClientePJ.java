@@ -24,4 +24,10 @@ public class ClientePJ {
 	private int n;
 	
 	private boolean ativado, desativado;
+	
+	
+	
+	public boolean setCNPJ(String cnpj) {
+		return true;
+	}
 }

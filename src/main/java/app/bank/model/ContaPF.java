@@ -43,4 +43,19 @@ public class ContaPF extends ContaBancaria{
 		public void setClientePF(app.bank.model.ClientePF clientePF2) {
 			this.clientePF = clientePF2;
 		}
+		
+
+		public boolean setClientePF(Object setCpf) {
+			
+			return false;
+		}
+	
+		public String setClientePFf(String cpf) {
+			return cpf;
+		}
+		
+		public  ClientePF  pfCliente(ClientePF clientePF) {
+			return clientePF = this.clientePF;
+		}
+		
 }
