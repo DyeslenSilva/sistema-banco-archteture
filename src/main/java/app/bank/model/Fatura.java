@@ -2,6 +2,8 @@ package app.bank.model;
 
 import java.util.Date;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -72,9 +74,7 @@ public class Fatura {
 	
 	public static Fatura gerarFatura(int[]nCartao,double valorFatura, Date dataVencimento, String desc, int nParcela) {
 			Fatura fatura = getFatura();
-			fatura.getNCartao(nCartao)
-				.getValorFatura(valorFatura)
-				.getDescricaoCompra(desc)
+			fatura.getNCartao(nCartao).getValorFatura(valorFatura).getDescricaoCompra(desc)
 				.getNParcela(nParcela);
 			return fatura;
 	}
@@ -85,7 +85,52 @@ public class Fatura {
 		return fatura;
 	}
 	
+	public void pagamentoFatura(int[] nCartao,double valorFatura, int senha) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(nCartao).getValorFatura(valorFatura)
+			.getSenhaFatura(senha);
+	}
+
+	public static Fatura gerarFatura(boolean setNCartao, Object setValorFatura, Object setDataVencimento,
+			Object setDescricaoCompra, Object setNParcela, String desc) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(nCartao).getValorFatura(valorFatura).getDescricaoCompra(desc)
+			.getNParcela(nParcela);
+		return fatura;
+	}
+
+	public static Fatura gerarFaturaF(boolean setNCartao, Object setValorFatura, Object setDataVencimento,
+			Object setDescricaoCompra, Object setNParcela) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(nCartao).getValorFatura(valorFatura).getDescricaoCompra(setDescricaoCompra.toString())
+			.getNParcela(nParcela);
+		return fatura;
+	}
+
+	public static Fatura consultaFatura(boolean setNCartao, Object setSenhaFatura) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(setNCartao).
+				getSenhaFatura(Integer.parseInt(setSenhaFatura.toString()));
+		return fatura;
+	}
+
+	private Fatura getNCartao(boolean setNCartao) {
+		return null;
+	}
+
+	public Fatura pagamentoFatura(boolean setNCartao, Object setValorFatura, Object setSenhaFatura) {
+		Fatura fatura = getFatura();
+		fatura.getNCartao(nCartao).getValorFatura(valorFatura)
+			.getSenhaFatura(Integer.parseInt(setSenhaFatura.toString()));
+		return fatura;
+	}
+
 }
+	
+
+
+	
+
 
 
 class ConverteFatura{

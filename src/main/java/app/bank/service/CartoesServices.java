@@ -1,6 +1,5 @@
 package app.bank.service;
 
-import org.hibernate.boot.jaxb.mapping.spi.FetchableAttribute;
 import org.springframework.stereotype.Service;
 
 import app.bank.model.CaixaEletronico;
@@ -22,6 +21,11 @@ public class CartoesServices implements CartoesInteface{
 	private CaixaEletronico caixaEletronico;
 	private Cartoes cartoes;
 	
+	
+	private Fatura getFatura() {
+		Fatura fatura = new Fatura();
+		return fatura;
+	}
 	
 	@Override
 	public void gerarCartaoDeDebito(int min, int max, String nome) {
@@ -50,12 +54,11 @@ public class CartoesServices implements CartoesInteface{
 		Debito.consultaSaldoPJ(clientePJ.getCNPJ(), senha);
 	}
 
-	@Override
 	public void consultaLimite(Cartoes cartoes, int senha) {
 		Credito.consultaLimiteCartaoPF(Cartoes.getNCartao(), senha);
 	}
 
-
+		
 	@Override
 	public Fatura gerarFaturaDeCredito(Fatura fatura) {
 		Fatura fat =
@@ -64,59 +67,47 @@ public class CartoesServices implements CartoesInteface{
 		return fat;
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public Fatura consultaFaturaDeCredito(Fatura nFatura, int senha) {
-		Fatura fatura = 
-				Fatura.consultaFatura(Fatura.getNCartao(), Fatura.getSenhaFatura());
+		Fatura fatura = getFatura();
+				fatura.consultaFatura(fatura.setNCartao(nFatura.getNCartao()),
+								fatura.getSenhaFatura(senha));
 		return fatura;
 	}
 
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public void sacar(int []nCartao,double valorDoSaque) {
-		caixaEletronico.saque(nCartao,valorDoSaque);
+		caixaEletronico.saque(cartoes.setNCartao(nCartao),
+							debito.setValorDoSaque(valorDoSaque));
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void bloquearCartao(int []nCartao, int senha) {
-		cartoes.bloquearCartao(nCartao, senha);
+		cartoes.bloquearCartao(Cartoes.setNCartao(cartoes.getNCartao()), 
+							cartoes.setSenha(cartoes.getSenha()));
 	}
 
 
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void cancelarCartao(int []nCartao, int senha) {
-		cartoes.desbloquearCartao(nCartao, senha);
+		cartoes.cancelarCartao(Cartoes.setNCartao(cartoes.getNCartao()), 
+						Cartoes.setSenha(cartoes.getSenha()));
 	}
 
 
+	@SuppressWarnings("static-access")
 	@Override
-	public void realizarPagamentoDeFatura(Cartoes cartoes, Credito credito) {
-		// TODO Auto-generated method stub
-		
+	public void realizarPagamentoDeFatura(int[] nCartao, double valorFatura, int senha) {
+		Fatura fatura = getFatura();
+		//fatura.pagamentoFatura(nCartao, valorFatura, senha);
+		fatura.pagamentoFatura(cartoes.setNCartao(cartoes.getNCartao()), 
+					cartoes.setValorFatura(fatura.getValorFatura()), 
+					cartoes.setSenha(fatura.getSenhaFatura()));
 	}
-
-
-
-	@Override
-	public void consultaLimite(ClientePJ clientePJ, int senha) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void consultaLimite(ClientePF clientePF, int senha) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
-
-
-
 }

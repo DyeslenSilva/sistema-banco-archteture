@@ -1,6 +1,6 @@
 package app.bank.enumeratiom;
 
-public enum BloqueioDesbloqueio {
+public enum BloqueioDesbloqueioCancel {
 	CaixaEletronico,
 	Aplicativo,
 	Guiche

@@ -16,7 +16,7 @@ public class Credito extends Cartoes{
 	@Getter @Setter
 	private ContaPJ contaPJ;
 	
-	public static double consultaLimitePF(int[] is, int senha) {
+	public static double consultaLimitePF(int[] nCartao, int senha) {
 		double limite = Cartoes.getLimiteCredito();
 		if(Cartoes.setNCartao(Cartoes.getNCartao()) && Cartoes.setSenha(senha)) {
 			return cartoes.setLimiteCredito(limite);

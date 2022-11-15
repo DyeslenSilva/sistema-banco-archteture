@@ -12,6 +12,9 @@ public class Debito extends Cartoes {
 	@Getter @Setter
 	private static ContaPJ contaPJ;
 	
+	@Getter @Setter
+	private double valorDoSaque;
+	
 
 	public static double consultaSaldoPF(ClientePF clientePF, int senha) {
 		double saldo = Cartoes.getSaldoDebito();
@@ -48,6 +51,22 @@ public class Debito extends Cartoes {
 		}else {
 			return saldo;
 		}
+	}
+	
+	
+	
+	
+	public	Object setValorDoSaque(double valorDoSaque) {
+		Object valorSaque = valorSaque();
+			if(valorSaque.equals(valorDoSaque)) {
+				return valorSaque;
+			}
+			return valorSaque;
+	}
+
+	private Object valorSaque() {
+		Object valorSaque =new Object();
+		return valorSaque;
 	}
 	
 }

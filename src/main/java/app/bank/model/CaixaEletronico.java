@@ -78,6 +78,13 @@ public class CaixaEletronico {
 		Cartoes cartoes = new Cartoes();
 		return cartoes;
 	}
+
+
+
+	public void saque(boolean setNCartao, Object setValorDoSaque) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
