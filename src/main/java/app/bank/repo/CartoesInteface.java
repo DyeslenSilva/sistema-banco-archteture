@@ -23,8 +23,8 @@ public interface CartoesInteface {
 	public void gerarCartaoDeDebito(int min, int max, String nome);
 	public Fatura gerarFaturaDeCredito(Fatura fatura);
 	public Fatura consultaFaturaDeCredito(Fatura nFatura, int senha);
-	void consultaSaldoPF(ClientePF clientePF, int senha);
-	void consultaSaldoPJ(ClientePJ clientePJ, int senha);
+	double consultaSaldoPF(ClientePF clientePF, int senha);
+	double consultaSaldoPJ(ClientePJ clientePJ, int senha);
 //	void consultaLimitePJ(ClientePJ clientePJ, int senha);
 //	void consultaLimitePF(Cartoes cartoes, int senha);
 	//void sacar(double valorDoSaque);
@@ -32,5 +32,8 @@ public interface CartoesInteface {
 	//void bloquearCartaoDeDebito(int[] nCartao, int senha);
 	void bloquearCartao(int[] nCartao, int senha);
 	void cancelarCartao(int[] nCartao, int senha);
-	void consultaLimite(Cartoes cartoes, int senha);
+	//void consultaLimite(Cartoes cartoes, int senha);
+	//void consultaLimitePF(Cartoes cartoes, int senha);
+	//void consultaLimitePJ(Cartoes cartoes, int senha);
+	double consultaLimite(Cartoes cartoes, int senha);
 }

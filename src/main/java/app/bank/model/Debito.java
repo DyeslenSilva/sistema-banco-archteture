@@ -11,10 +11,24 @@ public class Debito extends Cartoes {
 	
 	@Getter @Setter
 	private static ContaPJ contaPJ;
+
+	private static int senha;
 	
 	@Getter @Setter
 	private double valorDoSaque;
 	
+	
+	
+	private static ClientePF getClientePF() {
+		ClientePF clientePF = new ClientePF();
+		return clientePF;
+	}
+
+	
+	private static ClientePJ getClientePJ() {
+		ClientePJ clientePJ = new ClientePJ(getClientePJ());
+		return clientePJ;
+	}
 
 	public static double consultaSaldoPF(ClientePF clientePF, int senha) {
 		double saldo = Cartoes.getSaldoDebito();
@@ -68,5 +82,29 @@ public class Debito extends Cartoes {
 		Object valorSaque =new Object();
 		return valorSaque;
 	}
+
+	public static double consultaSaldoPF(String setCpf, boolean setSenha) {
+		double saldo = Cartoes.getSaldoDebito();
+		ClientePF clientePF = getClientePF();
+		if(contaPF.setClientePF(clientePF.getCpf())&& contaPF.setSenha(senha)) {
+			return contaPF.setSaldo(saldo);
+		}
+		return saldo;
+	}
+
+
+	
+	public static double consultaSaldoPJ(boolean setCNPJ, boolean setSenha) {
+		double saldo = Cartoes.getSaldoDebito();
+		ClientePJ clientePJ = getClientePJ();
+		if(contaPJ.setClientePJ(clientePJ .getCNPJ())&& contaPJ.setSenha(senha)) {
+			return contaPJ.setSaldo(saldo);
+		}else {
+			return saldo;
+		}
+		
+	}
+
+
 	
 }

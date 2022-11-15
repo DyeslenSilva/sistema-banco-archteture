@@ -6,6 +6,8 @@ import app.bank.model.CaixaEletronico;
 import app.bank.model.Cartoes;
 import app.bank.model.ClientePF;
 import app.bank.model.ClientePJ;
+import app.bank.model.ContaPF;
+import app.bank.model.ContaPJ;
 import app.bank.model.Credito;
 import app.bank.model.Debito;
 import app.bank.model.Fatura;
@@ -20,7 +22,8 @@ public class CartoesServices implements CartoesInteface{
 	private Credito credito;
 	private CaixaEletronico caixaEletronico;
 	private Cartoes cartoes;
-	
+	private ContaPF contaPF;
+	private ContaPJ contaPJ;
 	
 	private Fatura getFatura() {
 		Fatura fatura = new Fatura();
@@ -33,29 +36,30 @@ public class CartoesServices implements CartoesInteface{
 		ConfigCartao.adicionarNome(nome);
 	}
 
-	
-
 	@Override
 	public void gerarCartaoDeCredito(int min, int max, String nome) {
 		ConfigCartao.gerarNumeroDoCartao(min, max);
 		ConfigCartao.adicionarNome(nome);
 	}
-
-
 	
 	@Override
-	public void consultaSaldoPF(ClientePF clientePF, int senha) {
-		Debito.consultaSaldoPF(clientePF.getCpf(), senha);
+	public double consultaSaldoPF(ClientePF clientePF, int senha) {
+		double saldoPF = Debito.consultaSaldoPF(clientePF.setCpf(clientePF.getCpf()), 
+							contaPF.setSenha(contaPF.getSenha()));
+		return saldoPF;
 	}
 
 	
 	@Override
-	public void consultaSaldoPJ(ClientePJ clientePJ, int senha) {
-		Debito.consultaSaldoPJ(clientePJ.getCNPJ(), senha);
+	public double consultaSaldoPJ(ClientePJ clientePJ, int senha) {
+		double saldoPJ =	Debito.consultaSaldoPJ(clientePJ.setCNPJ(clientePJ.getCNPJ()), 
+					contaPJ.setSenha(contaPJ.getSenha()));
+		return saldoPJ;
 	}
 
-	public void consultaLimite(Cartoes cartoes, int senha) {
-		Credito.consultaLimiteCartaoPF(Cartoes.getNCartao(), senha);
+	public double consultaLimite(Cartoes cartoes, int senha) {
+		double limitePF =	Credito.consultaLimiteCartaoPF(Cartoes.getNCartao(), senha);
+		return limitePF;
 	}
 
 		
