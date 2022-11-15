@@ -1,5 +1,6 @@
 package app.bank.model;
 
+import app.bank.enumeratiom.BloqueioDesbloqueio;
 import app.bank.serviceconfig.ConfigCartao;
 import lombok.Data;
 import lombok.Getter;
@@ -34,9 +35,40 @@ public class Cartoes {
 	}
 
 	public static boolean setNCartao(boolean setNCartao) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	
+	public void setCartao(int[] nCartao, int senha) {
+		Cartoes.setNCartao(nCartao);	
+		Cartoes.setSenha(senha);
+	}
+	
+	public void bloquearCartao(int[] nCartao, int senha) {
+		if (BloqueioDesbloqueio.Aplicativo != null) {
+				this.setCartao(setNCartao(nCartao),setSenha(senha));
+		}else if (BloqueioDesbloqueio.CaixaEletronico != null) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}else if(BloqueioDesbloqueio.Guiche != null) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}
+	}
+	
+	public void desbloquearCartao(int[] nCartao, int senha) {
+		if(BloqueioDesbloqueio.Aplicativo != null) {
+			this.setCartao(setNCartao(nCartao),setSenha(senha));
+		}else if(BloqueioDesbloqueio.CaixaEletronico !=null) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}else if(BloqueioDesbloqueio.Guiche !=null) {
+			this.setCartao(setNCartao(nCartao),setSenha(senha));
+		}
+	}
+
+	private void setCartao(boolean setNCartao, boolean setSenha) {
+		Cartoes.setNCartao(setNCartao);
+		Cartoes.setSenha(senha);
+	}
+	
+		
 
 }

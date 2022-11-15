@@ -20,6 +20,7 @@ public class CartoesServices implements CartoesInteface{
 	private Debito debito;
 	private Credito credito;
 	private CaixaEletronico caixaEletronico;
+	private Cartoes cartoes;
 	
 	
 	@Override
@@ -77,28 +78,17 @@ public class CartoesServices implements CartoesInteface{
 	}
 
 	@Override
-	public void bloquearCartaoDeDebito(Cartoes cartoes, Debito debito) {
-		// TODO Auto-generated method stub
-		
+	public void bloquearCartao(int []nCartao, int senha) {
+		cartoes.bloquearCartao(nCartao, senha);
 	}
 
-	@Override
-	public void bloquearCartaoDeCredito(Cartoes cartoes, Credito credito) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
-	public void cancelarCartaoDeDebito(Cartoes cartoes, Debito debito) {
-		// TODO Auto-generated method stub
-		
+	public void cancelarCartao(int []nCartao, int senha) {
+		cartoes.desbloquearCartao(nCartao, senha);
 	}
 
-	@Override
-	public void cancelarCartaoDeCredito(Cartoes cartoes, Credito credito) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void realizarPagamentoDeFatura(Cartoes cartoes, Credito credito) {

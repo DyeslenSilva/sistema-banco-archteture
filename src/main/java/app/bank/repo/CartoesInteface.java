@@ -14,11 +14,11 @@ public interface CartoesInteface {
 	//public void consultaSaldo(ClientePF clientePF);
 	//public void consultaLimite(Cartoes cartoes, Credito credito);
 	//public void consultaFatura(Cartoes cartoes);
-//	public void sacar(Cartoes cartoes, Debito debito);
-	public void bloquearCartaoDeDebito(Cartoes cartoes, Debito debito) ;
-	public void bloquearCartaoDeCredito(Cartoes cartoes, Credito credito);
-	public void cancelarCartaoDeDebito(Cartoes cartoes, Debito debito);
-	public void cancelarCartaoDeCredito(Cartoes cartoes, Credito credito);
+	//	public void sacar(Cartoes cartoes, Debito debito);
+	//public void bloquearCartaoDeDebito(Cartoes cartoes, Debito debito) ;
+	//public void bloquearCartaoDeCredito(Cartoes cartoes, Credito credito);
+	//public void cancelarCartaoDeDebito(Cartoes cartoes, Debito debito);
+	//public void cancelarCartaoDeCredito(Cartoes cartoes, Credito credito);
 	public void realizarPagamentoDeFatura(Cartoes cartoes, Credito credito);
 	public void gerarCartaoDeDebito(int min, int max, String nome);
 	public Fatura gerarFaturaDeCredito(Fatura fatura);
@@ -30,4 +30,7 @@ public interface CartoesInteface {
 	void consultaLimite(Cartoes cartoes, int senha);
 	//void sacar(double valorDoSaque);
 	void sacar(int[] nCartao, double valorDoSaque);
+	//void bloquearCartaoDeDebito(int[] nCartao, int senha);
+	void bloquearCartao(int[] nCartao, int senha);
+	void cancelarCartao(int[] nCartao, int senha);
 }
