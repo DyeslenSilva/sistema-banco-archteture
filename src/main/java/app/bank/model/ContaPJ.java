@@ -10,7 +10,14 @@ public class ContaPJ extends ContaBancaria{
 	
 	private boolean ativado, desativado;
 	private int senha;
-
+	
+	
+	public ContaPJ contaPJ(int contaPJ) {
+		//ClientePJ contaPJpj = getClientePJ();
+		return contaPJ(contaPJ);
+	}
+	
+	
 	public boolean setClientePJ(String cnpj) {
 		
 		return true;
@@ -32,6 +39,30 @@ public class ContaPJ extends ContaBancaria{
 	public String setClientePJ(boolean setCNPJ) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public ContaPJ debito(int[] nCartao) {
+		ContaPJ contaPj = getContaPJ();
+		int contaPJ = getNumeroContaBancaria();
+		contaPj.setContaPJ(contaPJ);
+		return contaPj;
+	}
+
+
+	private void setContaPJ(int contaPJ) {
+		this.contaPJ(contaPJ);
+	}
+
+
+	private ContaPJ getContaPJ() {
+		return getContaPJ();
+	}
+
+
+	public void credito(int[] nCartao) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

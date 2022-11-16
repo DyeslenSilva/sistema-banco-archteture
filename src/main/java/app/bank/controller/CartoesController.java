@@ -72,6 +72,8 @@ public class CartoesController {
 			return ResponseEntity.accepted().build();
 		}
 	}
+	
+	
 
 	private boolean getClientePJ(String cnpj) {
 		if(cnpj.equals(cnpj)) 

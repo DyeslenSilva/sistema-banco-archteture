@@ -19,6 +19,18 @@ public class ContaPF extends ContaBancaria{
 		private double saldo;
 		
 		
+		
+		public ContaPF contaPF(int contaPF) {
+			ContaPF contaPFf = getContaPF();
+			return contaPFf.contaPF(contaPF);
+		}
+		
+		
+		private ContaPF getContaPF() {
+			return this.contaPF(senha);
+		}
+
+
 		public boolean setClientePF(String cpf) {
 			this.clientePF  = cpf (ClientePF)  ;
 			return true;
@@ -57,5 +69,33 @@ public class ContaPF extends ContaBancaria{
 		public  ClientePF  pfCliente(ClientePF clientePF) {
 			return clientePF = this.clientePF;
 		}
+
+
+		public Object debito(Object vincularCartaoConta) {
+			ContaPF contaPFf = getContaPF();
+			int contaPF = getNumeroContaBancaria();
+			contaPFf.contaPF(contaPF );
+			return contaPFf;
+		}
+
+
+		public ContaPF credito(int[] nCartao) {
+			ContaPF  cContaPF = getContaPF();
+			int nContaPF = getNumeroContaBancaria();
+			cContaPF.contaPF(nContaPF);
+			return cContaPF;
+			
+		}
+
+
+//		public void vinculaDebito(Object vincularCartaoConta) {
+//			ContaPF contaPFf = getContaPF();
+//			int contaPF = getNumeroContaBancaria();
+//			contaPFf.contaPF(contaPF );
+//			
+//		}
+
+
+		
 		
 }

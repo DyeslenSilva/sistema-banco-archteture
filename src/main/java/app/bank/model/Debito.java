@@ -19,6 +19,18 @@ public class Debito extends Cartoes {
 	
 	private Cartoes cartoes;
 	
+	
+	public Debito getDebitoC(Debito debito) {
+		Debito debitoC = getDebito();
+		return debitoC.getDebito();
+	}
+	
+	
+	private Debito getDebito() {
+		return this.getDebito();
+	}
+
+
 	private static ClientePF getClientePF() {
 		ClientePF clientePF = new ClientePF();
 		return clientePF;

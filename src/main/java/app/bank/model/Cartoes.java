@@ -70,7 +70,6 @@ public class Cartoes {
 		}
 	}
 	
-	
 	public void desbloquearCartao(boolean setNcartao, boolean setSenha) {
 		if(BloqueioDesbloqueioCancel.Aplicativo != null ) {
 			this.setCartao(setNCartao(nCartao), setSenha(senha));
@@ -78,8 +77,7 @@ public class Cartoes {
 			this.setCartao(setNCartao(nCartao), setSenha(senha));
 		}else if(BloqueioDesbloqueioCancel.Guiche != null) {
 			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}
-		
+		}	
 	}
 
 	public Object setValorFatura(double valorFatura) {
