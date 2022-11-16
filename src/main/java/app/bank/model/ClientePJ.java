@@ -35,6 +35,16 @@ public class ClientePJ {
 		ClientePJ clientePJ = ConvertePJ.transfPJ(cnpj);
 		return clientePJ;
 	}
+
+	public Cartoes nConta(int nConta) {
+		Cartoes cartoes = getConta(nConta);
+		return cartoes;
+	}
+
+	private Cartoes getConta(int nConta) {
+		Cartoes cartoes = new Cartoes();
+		return cartoes;
+	}
 	
 	
 }

@@ -58,6 +58,11 @@ public class ClientePF  {
 		ClientePF cpfCliente = ConvertePF.transfPF(cpf);
 		return cpfCliente;
 	}
+
+	public Cartoes nConta(int nConta) {
+		Cartoes cartoes = nConta(nConta);
+		return cartoes;
+	}
 }
 
 

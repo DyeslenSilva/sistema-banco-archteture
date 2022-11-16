@@ -83,4 +83,14 @@ public class Cartoes {
 	public Object setValorFatura(double valorFatura) {
 		return this.setValorFatura(valorFatura);
 	}
+
+	public int[] setNCartao(int boolToInt) {
+		int[] nCartao = getNCartao();
+ 		return nCartao;
+	}
+
+	public int[] setNCartao(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }		

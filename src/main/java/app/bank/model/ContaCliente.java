@@ -13,31 +13,36 @@ public class ContaCliente {
 	private Fatura fatura;
 	private Transacoes transacoes;
 
-	@SuppressWarnings("static-access")
+	
 	public void vinculoPFDebito(int setNumeroContaBanc, boolean setNCartao) {
 		contapf.contaPF(contapf.setNumeroContaBanc(setNumeroContaBanc))
-				.debito(cartoes.setNCartao(setNCartao));
+				.debito(cartoes.setNCartao(BooleanToInt.boolToInt(setNCartao)));
 	}
 
-	@SuppressWarnings("static-access")
+	
 	public void vinculoPFCredito(int setNumeroContaBanc, boolean setNCartao) {
 			contapf.contaPF(contapf.setNumeroContaBanc(setNumeroContaBanc))
-				.credito(cartoes.setNCartao(setNCartao));
+				.credito(cartoes.setNCartao(BooleanToInt.boolToInt(setNCartao)));
 	}
 
-	@SuppressWarnings("static-access")
 	public void vinculoPJDebito(int setNumeroContaBanc, boolean setNCartao) {
 		contaPJ.contaPJ(contaPJ.setNumeroContaBanc(setNumeroContaBanc))
-				.debito(cartoes.setNCartao(setNCartao));
+				.debito(cartoes.setNCartao(BooleanToInt.boolToInt(setNCartao)));
 	}
 
-	@SuppressWarnings("static-access")
 	public void vinculoPJCredito(int setNumeroContaBanc, boolean setNCartao) {
 		contaPJ.contaPJ(contaPJ.setNumeroContaBanc(setNumeroContaBanc))
-				.credito(cartoes.setNCartao(setNCartao));
+				.credito(cartoes.setNCartao(BooleanToInt.boolToInt(setNCartao)));
+		
 	}
 	
 	
+}
+
+
+class BooleanToInt{
 	
-	
+	public static int boolToInt(Boolean bool) {
+		return bool.compareTo(bool);
+	}
 }

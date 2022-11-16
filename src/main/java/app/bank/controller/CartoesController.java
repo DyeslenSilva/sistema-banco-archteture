@@ -73,7 +73,101 @@ public class CartoesController {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
+	public ResponseEntity<Cartoes> vinculoCartaoDebitoPF(@PathVariable ClientePF clientePF, Cartoes cartoes){
+		int nConta= getNConta();
+		int nCartao = getNCartao();
+		boolean vinculoPF = getClientePF(clientePF.nConta(nConta).setNCartao(nCartao));
+		if(vinculoPF==false) {
+			cartoesServices.vincularCDebitoFAConta(cartoes.getNCartao(), contaPF.getNumeroContaBancaria());
+			getClientePF(clientePF.nConta(nConta).setNCartao(nCartao));
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
 	
+
+
+	@SuppressWarnings("static-access")
+	public ResponseEntity<Cartoes> vinculoCartaoDeDebitoPJ(@PathVariable ClientePJ clientePJ, Cartoes cartoes){
+		int nConta = getNConta();
+		int nCartao = getNCartao();
+		boolean vinculoPJ = getClientePJ(clientePJ.nConta(nConta).setNCartao(nCartao));
+		if(vinculoPJ==false) {
+			cartoesServices.vincularCDebitoJAConta(cartoes.getNCartao(), contaPF.getNumeroContaBancaria());
+			getClientePJ(clientePJ.nConta(nConta).setNCartao(nCartao));
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	
+	@SuppressWarnings("static-access")
+	public ResponseEntity<Cartoes> vinculoCartaoDeDCreditoPF(@PathVariable ClientePF clientePF, Cartoes cartoes){
+		int nConta = getNConta();
+		int nCartao = getNCartao();
+		boolean vinculloPF = getClientePF(clientePF.nConta(nConta).setNCartao(nCartao));
+		if(vinculloPF == false) {
+			cartoesServices.vincularCCreditoFAConta(cartoes.getNCartao(), contaPF.getNumeroContaBancaria());
+			getClientePF(clientePF.nConta(nConta).setNCartao(nCartao));
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	
+	@SuppressWarnings("static-access")
+	public ResponseEntity<Cartoes> vinculoCartaoDeCreditoPJ(@PathVariable ClientePJ clientePJ, Cartoes cartoes){
+		int nConta = getNCartao();
+		int nCartao = getNCartao();
+		boolean vinculloPJ = getClientePJ(clientePJ.nConta(nConta).setNCartao(nCartao));
+		if(vinculloPJ == false) {
+			cartoesServices.vincularCCreditoJAConta(cartoes.getNCartao(), contaPJ.getNumeroContaBancaria());
+			getClientePJ(clientePJ.nConta(nConta).setNCartao(nCartao));
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.badRequest().build();
+		}
+	}
+
+	private boolean getClientePJ(int[] setNCartao) {
+		if (setNCartao.equals(setNCartao)) {
+			return true;
+		}
+		return false;
+	}
+	
+	private int getNCartao() {
+		int nCartao = Integer.hashCode(getNCartao());
+		return nCartao;
+	}
+
+	private int getNConta() {
+		int nConta = Integer.hashCode(getNConta());
+		return nConta;
+	}
+
+	@SuppressWarnings("unused")
+	private boolean getClientePF(ClientePF clientePF) {
+		if(clientePF.isAtivado()) {
+			return true;
+		}else if(clientePF.isDesativado()) {
+			return false;
+		}
+		return false;
+	}
+
+	private boolean getClientePF(int[] nCartao) {
+		if(nCartao.equals(nCartao)) {
+			return true;
+		}else if(nCartao.equals(nCartao)) {
+			return false;
+		}
+		return false;
+	}
 
 	private boolean getClientePJ(String cnpj) {
 		if(cnpj.equals(cnpj)) 
@@ -83,9 +177,8 @@ public class CartoesController {
 	}
 	
 	private boolean getClientePF(String cpf) {
-		if(cpf.equals(cpf)) {
+		if(cpf.equals(cpf)) 
 			return true;
-		}
 		return false;
 	}
 
