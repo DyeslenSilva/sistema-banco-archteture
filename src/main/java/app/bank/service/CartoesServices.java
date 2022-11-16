@@ -6,6 +6,7 @@ import app.bank.model.CaixaEletronico;
 import app.bank.model.Cartoes;
 import app.bank.model.ClientePF;
 import app.bank.model.ClientePJ;
+import app.bank.model.ContaCliente;
 import app.bank.model.ContaPF;
 import app.bank.model.ContaPJ;
 import app.bank.model.Credito;
@@ -24,6 +25,8 @@ public class CartoesServices implements CartoesInteface{
 	private Cartoes cartoes;
 	private ContaPF contaPF;
 	private ContaPJ contaPJ;
+	private ContaCliente contaCliente;
+	private ClientePF clientePF;
 	
 	private Fatura getFatura() {
 		Fatura fatura = new Fatura();
@@ -112,14 +115,32 @@ public class CartoesServices implements CartoesInteface{
 					cartoes.setSenha(fatura.getSenhaFatura()));
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public void vincularCDebitoAConta(int []nCarto, int nConta) {
-			
+	public void vincularCDebitoFAConta(int[] nCarto, int nConta) {
+		contaCliente.vinculoPFDebito(contaPF.setNumeroContaBanc(nConta), 
+							debito.setNCartao(nCarto));
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public void vincularCCreditoAConta(int []nCartao, int nConta) {
-		
+	public void vincularCCreditoFAConta(int[] nCartao, int nConta) {
+		contaCliente.vinculoPFCredito(contaPF.setNumeroContaBanc(nConta), 
+								credito.setNCartao(nCartao));
+	}
+
+	@SuppressWarnings("static-access")
+	@Override
+	public void vincularCDebitoJAConta(int[] nCarto, int nConta) {
+			contaCliente.vinculoPJDebito(contaPJ.setNumeroContaBanc(nConta), 
+							debito.setNCartao(nCarto));
+	}
+
+	@SuppressWarnings("static-access")
+	@Override
+	public void vincularCCreditoJAConta(int[] nCartao, int nConta) {
+			contaCliente.vinculoPJCredito(contaPJ.setNumeroContaBanc(nConta), 
+						credito.setNCartao(nCartao));
 	}
 	
 }

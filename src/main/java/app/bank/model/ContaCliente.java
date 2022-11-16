@@ -12,30 +12,32 @@ public class ContaCliente {
 	private Credito credito;
 	private Fatura fatura;
 	private Transacoes transacoes;
-	
-	
+
 	@SuppressWarnings("static-access")
-	public void vinculoPFDebito(ContaPF conta, Debito debito) {
-		contapf.contaPF(conta.getNumeroContaBancaria())
-			.debito(debito.getNCartao());
-	}
-	
-	@SuppressWarnings("static-access")
-	public void vinculoPJDebito(ContaPJ contapj, Debito debito) {
-		contaPJ.contaPJ(contapj.getNumeroContaBancaria())
-			.debito(debito.getNCartao());
-	}
-	
-	@SuppressWarnings("static-access")
-	public void vinculoPFCredito(ContaPF contaPF, Credito credit) {
-		contapf.contaPF(contaPF.getNumeroContaBancaria())
-			.credito(credit.getNCartao());
+	public void vinculoPFDebito(int setNumeroContaBanc, boolean setNCartao) {
+		contapf.contaPF(contapf.setNumeroContaBanc(setNumeroContaBanc))
+				.debito(cartoes.setNCartao(setNCartao));
 	}
 
 	@SuppressWarnings("static-access")
-	public void vinculoPJCredito(ContaPJ contaPJ, Credito credito) {
-		contaPJ.contaPJ(this.contaPJ.getNumeroContaBancaria())
-				.credito(credito.getNCartao());
-			
+	public void vinculoPFCredito(int setNumeroContaBanc, boolean setNCartao) {
+			contapf.contaPF(contapf.setNumeroContaBanc(setNumeroContaBanc))
+				.credito(cartoes.setNCartao(setNCartao));
 	}
+
+	@SuppressWarnings("static-access")
+	public void vinculoPJDebito(int setNumeroContaBanc, boolean setNCartao) {
+		contaPJ.contaPJ(contaPJ.setNumeroContaBanc(setNumeroContaBanc))
+				.debito(cartoes.setNCartao(setNCartao));
+	}
+
+	@SuppressWarnings("static-access")
+	public void vinculoPJCredito(int setNumeroContaBanc, boolean setNCartao) {
+		contaPJ.contaPJ(contaPJ.setNumeroContaBanc(setNumeroContaBanc))
+				.credito(cartoes.setNCartao(setNCartao));
+	}
+	
+	
+	
+	
 }

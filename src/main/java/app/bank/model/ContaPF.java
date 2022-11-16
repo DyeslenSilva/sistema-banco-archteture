@@ -88,6 +88,22 @@ public class ContaPF extends ContaBancaria{
 		}
 
 
+		public ContaPF contaPF(Object setNumeroContaBancaria) {
+			ContaPF  cContaPF = getContaPF();
+			int nContaPF = getNumeroContaBancaria();
+			cContaPF.contaPF(nContaPF);
+			return cContaPF;
+		}
+
+
+		public void credito(boolean setNCartao) {
+			if (setNCartao) {
+				return;
+			}
+		}
+
+
+
 //		public void vinculaDebito(Object vincularCartaoConta) {
 //			ContaPF contaPFf = getContaPF();
 //			int contaPF = getNumeroContaBancaria();

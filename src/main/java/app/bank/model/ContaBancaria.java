@@ -36,6 +36,11 @@ public class ContaBancaria {
 	}
 	
 	
+	public int setNumeroContaBanc(int nContaC) {
+		return nContaC;
+	}
+	
+	
 	
 	
 }
