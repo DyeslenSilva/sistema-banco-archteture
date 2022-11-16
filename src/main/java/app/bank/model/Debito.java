@@ -17,7 +17,7 @@ public class Debito extends Cartoes {
 	@Getter @Setter
 	private double valorDoSaque;
 	
-	
+	private Cartoes cartoes;
 	
 	private static ClientePF getClientePF() {
 		ClientePF clientePF = new ClientePF();
@@ -65,10 +65,7 @@ public class Debito extends Cartoes {
 		}else {
 			return saldo;
 		}
-	}
-	
-	
-	
+	}	
 	
 	public	Object setValorDoSaque(double valorDoSaque) {
 		Object valorSaque = valorSaque();
@@ -91,8 +88,6 @@ public class Debito extends Cartoes {
 		}
 		return saldo;
 	}
-
-
 	
 	public static double consultaSaldoPJ(boolean setCNPJ, boolean setSenha) {
 		double saldo = Cartoes.getSaldoDebito();
@@ -101,9 +96,16 @@ public class Debito extends Cartoes {
 			return contaPJ.setSaldo(saldo);
 		}else {
 			return saldo;
-		}
-		
+		}	
 	}
+	
+	@SuppressWarnings("static-access")
+	public void vincularCartaoConta(int [] nCartao, int nConta) {
+		if(cartoes.setNCartao(nCartao) && contaPF.setNumeroConta(nConta)) {
+			
+		}
+	}
+	
 
 
 	

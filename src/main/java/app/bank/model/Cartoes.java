@@ -45,36 +45,7 @@ public class Cartoes {
 		Cartoes.setSenha(senha);
 	}
 	
-	public void bloquearCartao(int[] nCartao, int senha) {
-		if (BloqueioDesbloqueioCancel.Aplicativo != null) {
-				this.setCartao(setNCartao(nCartao),setSenha(senha));
-		}else if (BloqueioDesbloqueioCancel.CaixaEletronico != null) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}else if(BloqueioDesbloqueioCancel.Guiche != null) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}
-	}
-	
-	public void desbloquearCartao(int[] nCartao, int senha) {
-		if(BloqueioDesbloqueioCancel.Aplicativo != null) {
-			this.setCartao(setNCartao(nCartao),setSenha(senha));
-		}else if(BloqueioDesbloqueioCancel.CaixaEletronico !=null) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}else if(BloqueioDesbloqueioCancel.Guiche !=null) {
-			this.setCartao(setNCartao(nCartao),setSenha(senha));
-		}
-	}
 
-	public void cancelarCartao(int[] nCartao, int senha) {
-		if(BloqueioDesbloqueioCancel.Aplicativo != null ) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}else if(BloqueioDesbloqueioCancel.CaixaEletronico != null) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}else if(BloqueioDesbloqueioCancel.Guiche != null) {
-			this.setCartao(setNCartao(nCartao), setSenha(senha));
-		}
-	}
-	
 	private void setCartao(boolean setNCartao, boolean setSenha) {
 		Cartoes.setNCartao(setNCartao);
 		Cartoes.setSenha(senha);
@@ -97,14 +68,21 @@ public class Cartoes {
 		}else if(BloqueioDesbloqueioCancel.Guiche != null) {
 			this.setCartao(setNCartao(nCartao), setSenha(senha));
 		}
+	}
+	
+	
+	public void desbloquearCartao(boolean setNcartao, boolean setSenha) {
+		if(BloqueioDesbloqueioCancel.Aplicativo != null ) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}else if(BloqueioDesbloqueioCancel.CaixaEletronico != null) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}else if(BloqueioDesbloqueioCancel.Guiche != null) {
+			this.setCartao(setNCartao(nCartao), setSenha(senha));
+		}
 		
 	}
 
 	public Object setValorFatura(double valorFatura) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.setValorFatura(valorFatura);
 	}
-
 }		
-
-

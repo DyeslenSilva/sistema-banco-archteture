@@ -82,7 +82,6 @@ public class CaixaEletronico {
 
 
 	public void saque(boolean setNCartao, Object setValorDoSaque) {
-		// TODO Auto-generated method stub
 		
 	}
 	

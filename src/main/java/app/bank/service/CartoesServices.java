@@ -95,15 +95,12 @@ public class CartoesServices implements CartoesInteface{
 							cartoes.setSenha(cartoes.getSenha()));
 	}
 
-
-
 	@SuppressWarnings("static-access")
 	@Override
 	public void cancelarCartao(int []nCartao, int senha) {
 		cartoes.cancelarCartao(Cartoes.setNCartao(cartoes.getNCartao()), 
 						Cartoes.setSenha(cartoes.getSenha()));
 	}
-
 
 	@SuppressWarnings("static-access")
 	@Override
@@ -114,4 +111,16 @@ public class CartoesServices implements CartoesInteface{
 					cartoes.setValorFatura(fatura.getValorFatura()), 
 					cartoes.setSenha(fatura.getSenhaFatura()));
 	}
+
+	@Override
+	public void vincularCDebitoAConta(int []nCarto, int nConta) {
+			
+	}
+
+	@Override
+	public void vincularCCreditoAConta(int []nCartao, int nConta) {
+	
+		
+	}
+	
 }

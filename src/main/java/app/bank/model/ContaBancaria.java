@@ -27,6 +27,15 @@ public class ContaBancaria {
 		return this.saldoConta;
 	}
 	
+	public boolean setNumeroConta(int nConta) {
+		if(nConta == getNumeroContaBancaria()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	
 	
 	
 }

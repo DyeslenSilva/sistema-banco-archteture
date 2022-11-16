@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "clientePF")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientePF {
+public class ClientePF  {
 
 	@Id
 	private String rg;
@@ -51,6 +51,24 @@ public class ClientePF {
 		return cpf2;
 	}
 	
+	
+	
+	
+	public ClientePF cpf(String cpf) {
+		ClientePF cpfCliente = ConvertePF.transfPF(cpf);
+		return cpfCliente;
+	}
+}
 
+
+class ConvertePF{
+	
+	public static ClientePF transfPF(Object cliente) {
+		if(cliente != null) {
+			return (ClientePF) cliente;
+		}else {
+			return null;
+		}
+	}
 	
 }

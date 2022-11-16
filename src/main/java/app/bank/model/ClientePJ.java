@@ -30,4 +30,21 @@ public class ClientePJ {
 	public boolean setCNPJ(String cnpj) {
 		return true;
 	}
+	
+	public ClientePJ cnpj(String cnpj) {
+		ClientePJ clientePJ = ConvertePJ.transfPJ(cnpj);
+		return clientePJ;
+	}
+	
+	
+}
+
+class ConvertePJ{
+	public static ClientePJ transfPJ(Object cliente) {
+		if(cliente != null) {
+			return (ClientePJ) cliente;
+		}else {
+			return null;
+		}
+}
 }

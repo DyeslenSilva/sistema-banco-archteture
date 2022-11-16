@@ -36,4 +36,9 @@ public interface CartoesInteface {
 	//void consultaLimitePF(Cartoes cartoes, int senha);
 	//void consultaLimitePJ(Cartoes cartoes, int senha);
 	double consultaLimite(Cartoes cartoes, int senha);
+	//void vincularCDebitoAConta();
+	//void vincularCCreditoAConta();
+	void vincularCDebitoAConta(int[] nCarto, int nConta);
+	void vincularCCreditoAConta(int[] nCartao, int nConta);
+	
 }
