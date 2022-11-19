@@ -25,6 +25,7 @@ public class ClientePF  {
 	private String telefoneFixo,celular, whatsapp, email;
 	private String profissaoAtual, remuneracao, renda, statusMatrimonial;
 	private boolean ativado, desativado;
+	private String telefone;
 	
 	
 	
@@ -46,14 +47,20 @@ public class ClientePF  {
 		return this.cpf = cpf;
 	}
 
+	
+	public String setTelefone(String telefone) {
+		return this.telefone = telefone;
+	}
+	
 	public String setCpf(String cpf2) {
 		// TODO Auto-generated method stub
 		return cpf2;
 	}
 	
-	
-	
-	
+	public String setRG(String rg) {
+		return rg;
+	}
+
 	public ClientePF cpf(String cpf) {
 		ClientePF cpfCliente = ConvertePF.transfPF(cpf);
 		return cpfCliente;

@@ -118,14 +118,14 @@ public class CartoesServices implements CartoesInteface{
 	@SuppressWarnings("static-access")
 	@Override
 	public void vincularCDebitoFAConta(int[] nCarto, int nConta) {
-		contaCliente.vinculoPFDebito(contaPF.setNumeroContaBanc(nConta), 
+		contaCliente.vinculoPFDebito(contaPF.getNumeroContaBancaria(), 
 							debito.setNCartao(nCarto));
 	}	
 
 	@SuppressWarnings("static-access")
 	@Override
 	public void vincularCCreditoFAConta(int[] nCartao, int nConta) {
-		contaCliente.vinculoPFCredito(contaPF.setNumeroContaBanc(nConta), 
+		contaCliente.vinculoPFCredito(contaPF.getNumeroContaBancaria(), 
 								credito.setNCartao(nCartao));
 	}
 

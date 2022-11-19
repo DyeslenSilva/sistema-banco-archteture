@@ -80,6 +80,12 @@ public class ContaPJ extends ContaBancaria{
 		contaPj.setContaPJ(contaPJ);
 		return ;
 	}
+
+
+	public int setNumeroContaBanc(int setNumeroContaBanc) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

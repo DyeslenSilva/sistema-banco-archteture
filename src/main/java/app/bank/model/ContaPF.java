@@ -103,6 +103,18 @@ public class ContaPF extends ContaBancaria{
 		}
 
 
+		public Object setNumeroContaBanc(int setNumeroContaBanc) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
+		public boolean setNumeroConta(int nConta) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+
 
 //		public void vinculaDebito(Object vincularCartaoConta) {
 //			ContaPF contaPFf = getContaPF();

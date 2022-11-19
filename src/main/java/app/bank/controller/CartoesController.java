@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.bank.model.Cartoes;
@@ -74,6 +75,7 @@ public class CartoesController {
 	}
 	
 	@SuppressWarnings("static-access")
+	@PostMapping("/vinculoPFd/{nConta}/{nCartao}")
 	public ResponseEntity<Cartoes> vinculoCartaoDebitoPF(@PathVariable ClientePF clientePF, Cartoes cartoes){
 		int nConta= getNConta();
 		int nCartao = getNCartao();
@@ -90,6 +92,7 @@ public class CartoesController {
 
 
 	@SuppressWarnings("static-access")
+	@PostMapping("/vinculoPJd/{nConta}/{nCartao}")
 	public ResponseEntity<Cartoes> vinculoCartaoDeDebitoPJ(@PathVariable ClientePJ clientePJ, Cartoes cartoes){
 		int nConta = getNConta();
 		int nCartao = getNCartao();
@@ -105,6 +108,7 @@ public class CartoesController {
 	
 	
 	@SuppressWarnings("static-access")
+	@PostMapping("/vinculoPFc/{nConta}/{nCartao}")
 	public ResponseEntity<Cartoes> vinculoCartaoDeDCreditoPF(@PathVariable ClientePF clientePF, Cartoes cartoes){
 		int nConta = getNConta();
 		int nCartao = getNCartao();
@@ -120,6 +124,7 @@ public class CartoesController {
 	
 	
 	@SuppressWarnings("static-access")
+	@GetMapping("/vinculoPJc/{nConta}/{nCartao}")
 	public ResponseEntity<Cartoes> vinculoCartaoDeCreditoPJ(@PathVariable ClientePJ clientePJ, Cartoes cartoes){
 		int nConta = getNCartao();
 		int nCartao = getNCartao();
@@ -161,11 +166,10 @@ public class CartoesController {
 	}
 
 	private boolean getClientePF(int[] nCartao) {
-		if(nCartao.equals(nCartao)) {
+		if(nCartao.equals(nCartao)) 
 			return true;
-		}else if(nCartao.equals(nCartao)) {
+		else if(nCartao.equals(nCartao)) 
 			return false;
-		}
 		return false;
 	}
 
@@ -173,7 +177,6 @@ public class CartoesController {
 		if(cnpj.equals(cnpj)) 
 			return true;
 		return false;
-		
 	}
 	
 	private boolean getClientePF(String cpf) {

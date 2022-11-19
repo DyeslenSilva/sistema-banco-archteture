@@ -31,6 +31,11 @@ public class ClientePJ {
 		return true;
 	}
 	
+	public String setCNPJj(String cnpj) {
+		return this.CNPJ;
+	}
+	
+	
 	public ClientePJ cnpj(String cnpj) {
 		ClientePJ clientePJ = ConvertePJ.transfPJ(cnpj);
 		return clientePJ;
