@@ -44,28 +44,34 @@ public class ContaBancaria {
 		return this.numeroContaBancaria;
 	}
 
-	public Object nConta(int conta) {
+	public List<Transacoes> nConta(int conta) {
 		return this.nConta(conta);
 	}
 
-	public void valorDeposito(double valor) {
+	public List<Transacoes> valorDeposito(double valor) {
+		List<Transacoes> valorDeposito = new ArrayList<>();
 		this.valorDeposito(valor);
+		valorDeposito.add((Transacoes) valorDeposito(valor));
+		return valorDeposito ;
 	}
 
-	public void contaDestino(int contaDestino) {
+	public List<Transacoes> contaDestino(int contaDestino) {
+		List<Transacoes> contaDestinoDep = new ArrayList<>();
 		this.contaDestino(contaDestino);
+		contaDestinoDep.add((Transacoes) contaDestino(contaDestino));
+		return contaDestinoDep;
 	}
 
-	public Object valorTranferenciaTED(double valor) {
+	public List<Transacoes> valorTranferenciaTED(double valor) {
 		return this.valorTranferenciaTED(valor);
 	}
 
-	public void time(int tempo) {
-		this.time(tempo);
+	public List<Transacoes> time(int tempo) {
+		return this.time(tempo);
 	}
 
-	public void valorTranferenciaDOC(double valor) {
-		this.valorTranferenciaDOC(valor);
+	public List<Transacoes> valorTranferenciaDOC(double valor) {
+		return	this.valorTranferenciaDOC(valor);
 	}
 
 	
