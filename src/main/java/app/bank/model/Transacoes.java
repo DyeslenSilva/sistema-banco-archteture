@@ -53,15 +53,58 @@ public class Transacoes {
 		return pixTemporal;
  	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Transacoes> vizualizarTransacoes(){
 		List<Transacoes> transacoes = new ArrayList<>();
 		int nConta= getNConta();
-		transacoes.add(deposito(0, 0));
-		
+		int nContaDestino = getNContaDestino();
+		double valorDeposito = getValorDeposito();
+		int tempo = getTempo();
+		TipoChave[] tipoChave = getTipoChave();
+		String chave = getChave();
+		Date data = getDataPix();
+		transacoes.add(deposito(nConta, valorDeposito));
+		transacoes.add((Transacoes) transferenciaDOC(nConta, nContaDestino, valorDeposito));
+		transacoes.add((Transacoes) transferenciaTED(nConta, nContaDestino, valorDeposito, tempo));
+		transacoes.add((Transacoes) pix(tipoChave, chave, valorDeposito));
+		transacoes.add((Transacoes) pixTemporal(tipoChave, chave, valorDeposito, data));
+		for(Transacoes transacao : transacoes) {
+			return (List<Transacoes>) transacao;
+		}
+		return transacoes;
+	}
+	
+	
+	
+	
+	private Date getDataPix() {
+		return getDataPix();
+	}
+
+	private String getChave() {
+		return getChave();
+	}
+
+	private TipoChave[] getTipoChave() {
+		return getTipoChave();
+	}
+
+	private int getTempo() {
+		// TODO Auto-generated method stub
+		return getTempo();
+	}
+
+	private int getNContaDestino() {
+		// TODO Auto-generated method stub
+		return getNContaDestino();
+	}
+
+	private double getValorDeposito() {
+		return getValorDeposito();
 	}
 
 	private int getNConta() {
-		return 0;
+		return getNConta();
 	}
 	
 	
