@@ -14,14 +14,12 @@ public class Transacoes {
 	private List<Transacoes> transacoes = new ArrayList<>();
 	
 	
-	@SuppressWarnings("unchecked")
 	public Transacoes deposito(int conta, double valor) {
 		transacoes = (List<Transacoes>) bancaria.nConta(conta);
 		transacoes = 	bancaria.valorDeposito(valor);
 		return transacoes.get(conta);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Transacoes> transferenciaTED(int contaCliente, int contaDestino, double valor, int tempo) {
 		List<Transacoes> transferenciaTED = new ArrayList<>();
 		
@@ -74,9 +72,6 @@ public class Transacoes {
 		return transacoes;
 	}
 	
-	
-	
-	
 	private Date getDataPix() {
 		return getDataPix();
 	}
@@ -90,12 +85,10 @@ public class Transacoes {
 	}
 
 	private int getTempo() {
-		// TODO Auto-generated method stub
 		return getTempo();
 	}
 
 	private int getNContaDestino() {
-		// TODO Auto-generated method stub
 		return getNContaDestino();
 	}
 
