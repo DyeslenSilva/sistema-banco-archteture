@@ -13,13 +13,13 @@ public class PoupancaController {
 
 	private PoupancaService poupancaService;
 	
-	@GetMapping("/cdi/{capital}/{taxa}/{tempo}")
+	@GetMapping("/cdb/{capital}/{taxa}/{tempo}")
 	public  ResponseEntity<Poupanca> poupancaCDB(@PathVariable Poupanca poupanca){
 		poupancaService.cdb(poupanca.getCapital(), poupanca.getTaxaDeJuros(), poupanca.getTempo());
 			return ResponseEntity.ok().build();
 	}
 	
-	@GetMapping("cdb/{capital}/{taxa}/{tempo}")
+	@GetMapping("cdi/{capital}/{taxa}/{tempo}")
 	public ResponseEntity<Poupanca> poupancaCDI(@PathVariable Poupanca poupanca){
 		poupancaService.cdi(poupanca.getCapital(), poupanca.getTaxaDeJuros(), poupanca.getTempo());
 		return ResponseEntity.ok().build();

@@ -1,14 +1,23 @@
 package app.bank.model;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Hashtable;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
+import javax.imageio.stream.ImageOutputStream;
 
-import lombok.AllArgsConstructor;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.matcher.CollectionOneToOneMatcher;
 
 
 public class Fatura {
@@ -104,6 +113,8 @@ public class Fatura {
 		Fatura fatura = getFatura();
 		fatura.getNCartao(nCartao).getValorFatura(valorFatura).getDescricaoCompra(setDescricaoCompra.toString())
 			.getNParcela(nParcela);
+		
+		//gerarQRCode(ImageOutputStream valorS, String qrCodeText, int size, String fileType);
 		return fatura;
 	}
 
@@ -124,6 +135,32 @@ public class Fatura {
 			.getSenhaFatura(Integer.parseInt(setSenhaFatura.toString()));
 		return fatura;
 	}
+	
+	
+	public void gerarQRCode(ImageOutputStream valorS, String qrCodeText, int size, String fileType) throws WriterException, IOException {
+		Hashtable<EncodeHintType, ErrorCorrectionLevel> map = new Hashtable<>();
+		map.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+		QRCodeWriter codeWriter = new QRCodeWriter();
+		BitMatrix byteMatrix = codeWriter.
+					encode(qrCodeText, BarcodeFormat.QR_CODE, size, size,map);
+			int matrixWidth = byteMatrix.getWidth();
+			BufferedImage bufferedImage = new BufferedImage(matrixWidth, matrixWidth, BufferedImage.TYPE_INT_RGB);
+			bufferedImage.createGraphics();
+				Graphics2D graphics2d = (Graphics2D) bufferedImage.getGraphics();
+				graphics2d.setColor(Color.white);
+				graphics2d.fillRect(0, 0, matrixWidth, matrixWidth);
+				graphics2d.setColor(Color.black);
+					for(int i=0;i<matrixWidth; i++) {
+						for(int j=0; j<matrixWidth; j++) {
+							if(byteMatrix.get(i, j)) {
+								graphics2d.fillRect(i, j, 1, 1);
+							}
+						}
+					}
+					
+					double valorFatura = getValorFatura();
+					 setValorFatura(valorFatura);
+					}
 
 }
 	
